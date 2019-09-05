@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :sessions
-  resources :students
-  resources :tutors
+  get '/students' => 'students#index'
+  get '/students/:id' => 'students#show'
+  get '/tutors' => 'tutors#index'
+  get '/tutors/:id' => 'tutors#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/sessions' => 'sessions#index'
-  get '/sessions/:id' => 'sessions#show'
+
 end
