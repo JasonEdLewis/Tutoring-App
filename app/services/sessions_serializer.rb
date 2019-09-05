@@ -1,14 +1,25 @@
 class SessionSerializer
-    def initialize(@sessions)
-        options = {
-            include:{
-            tutor: {except:[:created_at
-                :updated_at]},
-            student: {except:[:created_at
-                :updated_at]
-            }, except: [:created_at,
+
+    def initialize(session_object)
+        @session = session_object
+    end 
+
+    def to_serialized_json
+            options = {
+                include:{
+                tutor: {except:[:created_at
+                    :updated_at]},
+                student: {except:[:created_at
+                    :updated_at]
+                }
+            },
+            except: [:created_at,
                 :updated_at]
         }
-    }
-    end 
+        @session.to_json(options)
+            
+    end
+    
+    
+    
 end
